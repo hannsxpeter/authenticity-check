@@ -15,7 +15,7 @@ description: >-
   remove marks, or make it sound like someone.
 allowed-tools: Read, Glob, Grep
 metadata:
-  version: 1.2.2
+  version: 1.2.3
   compatibility: claude-code, cursor, codex, antigravity, gemini-cli, pi-coder, opencode, copilot, windsurf, cline, continue, zed, aider
 ---
 

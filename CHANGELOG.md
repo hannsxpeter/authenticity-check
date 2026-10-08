@@ -5,6 +5,12 @@ to semantic versioning.
 
 ## [Unreleased]
 
+## [1.2.3] - 2026-10-08
+
+Tooling patch. Adds a drift check that runs in CI, plus the documentation
+fixes its first run found. No change to the scoring method, the band logic,
+or the diagnostic-only boundary.
+
 ### Added
 
 - A drift check, `.github/scripts/check_drift.py`, adapted from humanizer's,
@@ -22,6 +28,11 @@ to semantic versioning.
 - `AGENTS.md` now names `references/provenance-signals.md` for the Step 0a
   context audit, as the other adapters do.
 - The Cursor rule's method paragraph is rewrapped within 80 columns.
+
+### Changed
+
+- `SKILL.md` `metadata.version` and the `README.md` version badge bumped to
+  1.2.3.
 
 ## [1.2.2] - 2026-10-07
 
@@ -290,7 +301,8 @@ First stable release.
   known-vs-non-known battery, and the relocated-signature regression set, all
   run as blind isolated diagnoses. MIT license.
 
-[Unreleased]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.2...HEAD
+[Unreleased]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.3...HEAD
+[1.2.3]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/hannsxpeter/authenticity-check/compare/v1.1.1...v1.2.0
