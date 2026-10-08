@@ -22,7 +22,7 @@ collapsed into a single shared source of truth when the `voiceprint` product
 (humanizer + authenticity-check, bundled) is built. Until then, this header
 is the contract.
 
-Last synced: 2026-05-29 from humanizer @ 9632cf1
+Last synced: 2026-10-07 from humanizer @ 09bf76d
 =============================================================================
 -->
 
