@@ -3,6 +3,41 @@
 All notable changes to this skill are documented here. This project adheres
 to semantic versioning.
 
+## [1.2.2] - 2026-10-07
+
+Criteria re-sync patch. The vendored detection criteria now match humanizer
+1.3.1. No change to the scoring method, the band logic, or the
+diagnostic-only boundary.
+
+### Changed
+
+- Re-vendored `references/tell-patterns.md`, `references/do-not-flag.md`,
+  and `references/voice-matching.md` from humanizer v1.3.1 (`09bf76d`); sync
+  stamps bumped to `2026-10-07 / 09bf76d`. `do-not-flag.md` is byte-identical
+  to the prior `9632cf1` sync (header stamp only). `tell-patterns.md` renames
+  pattern 29 to "Knowledge-cutoff and capability disclaimers", notes that a
+  pattern's After line assumes writer-supplied facts, and rewords its
+  house-style note on em dashes. `voice-matching.md` now ranks explicit input
+  in the request (a pasted sample or a named author) above a discovered
+  profile file, and the explicit request wins a conflict.
+- `SKILL.md` Step 0b names pattern 29 by its new title. Step 0 needs no
+  change: it lists profile files in priority order and states no precedence
+  that contradicts the new voice-source order.
+- `SKILL.md` `metadata.version` and the `README.md` version badge bumped to
+  1.2.2; the README sync stamp updated.
+
+### Verification
+
+- The three vendored bodies are byte-identical to humanizer's files at
+  `09bf76d`, and the catalog keeps its 32 patterns in six families.
+- `evals/RESULTS.md` is left as the point-in-time record of the battery run
+  against criteria from `9632cf1`. None of its cases depends on the changed
+  material: the pattern 29 change is a title, the After-line and em dash
+  notes are rewrite-side and house-style guidance, and eval 2's voice source
+  is the VOICE.md the user names, so no source conflict arises. That file's
+  own rule still calls for a re-run when the vendored criteria change, and
+  none was done for this patch.
+
 ## [1.2.1] - 2026-08-15
 
 Documentation-only patch clarifying the exact relationship between the

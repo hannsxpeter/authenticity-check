@@ -15,7 +15,7 @@ description: >-
   remove marks, or make it sound like someone.
 allowed-tools: Read, Glob, Grep
 metadata:
-  version: 1.2.1
+  version: 1.2.2
   compatibility: claude-code, cursor, codex, antigravity, gemini-cli, pi-coder, opencode, copilot, windsurf, cline, continue, zed, aider
 ---
 
@@ -154,11 +154,11 @@ score by itself.
 
 Before scoring, skim the whole text once and judge how heavily it is
 AI-marked. Count only the **dead-giveaway** tells, not the weak surface
-signals: chat-UI contamination (pattern 31), knowledge-cutoff disclaimers
-(29), collaborative chatbot artifacts (28), significance inflation (1),
-promotional language (5), AI-vocabulary clustering (16), sycophantic tone (7),
-generic positive conclusion (13). Estimate roughly how many appear per 100
-words, then set the scrutiny level and announce it in the output header:
+signals: chat-UI contamination (pattern 31), knowledge-cutoff and capability
+disclaimers (29), collaborative chatbot artifacts (28), significance inflation
+(1), promotional language (5), AI-vocabulary clustering (16), sycophantic tone
+(7), generic positive conclusion (13). Estimate roughly how many appear per
+100 words, then set the scrutiny level and announce it in the output header:
 
 - **Low (about 0 to 2 per 100 words): light scrutiny**, unless the rhythm is
   uniform and no human markers are present (the relocated-signature override
