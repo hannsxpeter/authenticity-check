@@ -32,7 +32,7 @@ rewrite skill. `authenticity-check` is the read-only counterpart: it applies
 the same catalog and the same restraint to *diagnose* rather than transform,
 and it vendors humanizer's criteria so the two agree on what a tell is. If
 you want the rewrite, use humanizer. If you want the whole writing pipeline,
-see Scriveno (npm package: `scriveno-cli`).
+see Scriveno (npm package `scriveno`, run with `npx scriveno@latest`).
 
 ## What it does
 
@@ -151,7 +151,7 @@ its canonical upstream is the humanizer repo, and the obligations below.
 | Codex | `AGENTS.md` | Clone this repo into (or beside) your project; Codex reads `AGENTS.md` |
 | Antigravity | `AGENTS.md` | Same as Codex: keep `AGENTS.md` + `SKILL.md` + `references/` in the workspace |
 | Gemini CLI | `GEMINI.md` | Keep `GEMINI.md` + `SKILL.md` + `references/` in the project Gemini runs in |
-| Pi Coder | `AGENTS.md` | Point Pi Coder at this repo / its `AGENTS.md` |
+| Pi | `AGENTS.md` | Point Pi at this repo / its `AGENTS.md` |
 | OpenCode | `AGENTS.md` or `SKILL.md` | Copy the skill into OpenCode's skills directory, or keep `AGENTS.md` in the project |
 | GitHub Copilot | `.github/copilot-instructions.md` | Copy `.github/copilot-instructions.md` + `SKILL.md` + `references/` into the target repository |
 | Windsurf | `.windsurfrules` | Keep `.windsurfrules` + `SKILL.md` + `references/` in the project Windsurf opens |
@@ -222,7 +222,7 @@ a transformation, it cannot be turned into a score-then-rewrite gaming loop.
 
 ```
 SKILL.md                          orchestrator: workflow, guardrails, output contract
-AGENTS.md                         cross-tool entry point (Codex, Antigravity, OpenCode, Pi Coder)
+AGENTS.md                         cross-tool entry point (Codex, Antigravity, OpenCode, Pi)
 GEMINI.md                         Gemini CLI context
 .cursor/rules/authenticity-check.mdc  Cursor project rule (named to not collide with humanizer)
 .github/copilot-instructions.md   GitHub Copilot instructions
