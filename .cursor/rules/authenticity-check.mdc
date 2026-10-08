@@ -14,8 +14,9 @@ and, in voice-deviation mode only,
 `references/voice-matching.md`.
 
 Run the method as written: Step 0 baseline discovery, Step 0a provenance
-preflight, Step 0b density pre-check, then the multi-pass diagnostic (catalog scan, mandatory
-false-positive audit with veto power, read-only internal-consistency
+preflight, Step 0b density pre-check, then the multi-pass diagnostic
+(catalog scan, mandatory false-positive audit with veto power, read-only
+internal-consistency
 heuristics, voice deviation if a voice target exists). Produce the exact
 output contract: Authenticity report (band plus 0-100 score) / Provenance
 signals / Flagged spans / Reads as human / Score basis / Caveats / Next step.
