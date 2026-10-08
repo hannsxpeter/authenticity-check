@@ -3,6 +3,26 @@
 All notable changes to this skill are documented here. This project adheres
 to semantic versioning.
 
+## [Unreleased]
+
+### Added
+
+- A drift check, `.github/scripts/check_drift.py`, adapted from humanizer's,
+  and a GitHub Actions workflow that runs it on every pull request and every
+  push to `main`. It fails when versions, catalog and example counts, the
+  evals, what each tool adapter mentions, the vendored criteria headers and
+  sync stamps, file references, the README layout and anchors, or house style
+  drift apart, and it annotates the offending lines in pull requests.
+- A README status badge for the check, Layout entries for its files and for
+  `CHANGELOG.md` and `evals/RESULTS.md`, and a note on running it locally.
+- Version links at the end of this changelog.
+
+### Fixed
+
+- `AGENTS.md` now names `references/provenance-signals.md` for the Step 0a
+  context audit, as the other adapters do.
+- The Cursor rule's method paragraph is rewrapped within 80 columns.
+
 ## [1.2.2] - 2026-10-07
 
 Criteria re-sync patch with two documentation fixes. The vendored detection
@@ -269,3 +289,12 @@ First stable release.
   verification battery (`evals/RESULTS.md`): the six suite cases, a
   known-vs-non-known battery, and the relocated-signature regression set, all
   run as blind isolated diagnoses. MIT license.
+
+[Unreleased]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/hannsxpeter/authenticity-check/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/hannsxpeter/authenticity-check/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/hannsxpeter/authenticity-check/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/hannsxpeter/authenticity-check/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/hannsxpeter/authenticity-check/releases/tag/v1.0.0

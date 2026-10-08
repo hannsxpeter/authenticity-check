@@ -7,6 +7,7 @@
 ![mode](https://img.shields.io/badge/mode-diagnostic%20only-red)
 ![tools](https://img.shields.io/badge/works%20with-13%20AI%20coding%20tools-teal)
 ![release](https://img.shields.io/github/v/release/hannsxpeter/authenticity-check?label=release&color=blue)
+[![drift check](https://github.com/hannsxpeter/authenticity-check/actions/workflows/drift.yml/badge.svg)](https://github.com/hannsxpeter/authenticity-check/actions/workflows/drift.yml)
 
 A standalone, pure-prompt skill that scores how authentically a piece of text
 reads as the work of a real human author, and flags the specific spans that
@@ -207,6 +208,13 @@ On short inputs (a single paragraph or two), the internal-consistency pass
 Step 0b, and Passes 1-2 carry the read, with the relocated-signature override
 holding short marker-free uniform inputs in the low band.
 
+A drift check (`.github/scripts/check_drift.py`) runs on every pull request
+and every push to `main`. It fails when versions, catalog and example counts,
+the evals, what each tool adapter mentions, the vendored criteria headers and
+sync stamps, file references, the README layout and anchors, or house style
+drift apart. Run `python3 .github/scripts/check_drift.py` before you open a
+pull request.
+
 ## Scope
 
 This skill gives an honest read of how authentically text reads as a person's
@@ -230,6 +238,7 @@ GEMINI.md                         Gemini CLI context
 .clinerules                       Cline rules
 .continue/rules/authenticity-check.md  Continue / Zed rule
 CONVENTIONS.md                    Aider conventions
+CHANGELOG.md                      release history
 references/tell-patterns.md       vendored, synced from humanizer: the 32-pattern catalog (Pass 1)
 references/do-not-flag.md         vendored, synced from humanizer: false positives, human markers (Pass 2)
 references/voice-matching.md      vendored, synced from humanizer: voice reading (Pass 4)
@@ -238,6 +247,9 @@ references/scoring.md             native: band + 0-100 rubric, internal-consiste
 references/examples.md            native: six worked diagnostic runs
 evals/evals.json                  verification cases (not part of the runtime skill)
 evals/files/VOICE.md              voice baseline used by the voice-deviation eval
+evals/RESULTS.md                  recorded blind verification runs
+.github/workflows/drift.yml       CI: runs the drift check on pushes and pull requests
+.github/scripts/check_drift.py    the drift check (repo tooling, not part of the skill)
 ```
 
 ## License

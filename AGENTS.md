@@ -36,8 +36,9 @@ lives there and in `references/`; do not improvise a shortcut. In brief:
    a discovered `VOICE.md` / `STYLE-GUIDE.md`), enter voice-deviation mode;
    otherwise generic mode. Never invent a target voice.
 2. **Step 0a** provenance preflight: inspect supplied text for suspicious
-   Unicode carriers, run the mandatory context audit, and keep the result
-   separate from the authenticity score. Never alter the text.
+   Unicode carriers, run the mandatory context audit from
+   `references/provenance-signals.md`, and keep the result separate from the
+   authenticity score. Never alter the text.
 3. **Step 0b** density pre-check: skim for dead-giveaway tells and set
    scrutiny low, standard, or full so human-first text is not over-flagged.
 4. **Multi-pass:** catalog scan against `references/tell-patterns.md`
