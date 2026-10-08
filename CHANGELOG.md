@@ -5,9 +5,9 @@ to semantic versioning.
 
 ## [1.2.2] - 2026-10-07
 
-Criteria re-sync patch. The vendored detection criteria now match humanizer
-1.3.1. No change to the scoring method, the band logic, or the
-diagnostic-only boundary.
+Criteria re-sync patch with two documentation fixes. The vendored detection
+criteria now match humanizer 1.3.1. No change to the scoring method, the band
+logic, or the diagnostic-only boundary.
 
 ### Changed
 
@@ -25,6 +25,9 @@ diagnostic-only boundary.
   that contradicts the new voice-source order.
 - `SKILL.md` `metadata.version` and the `README.md` version badge bumped to
   1.2.2; the README sync stamp updated.
+- README: the Scriveno pointer names the published npm package `scriveno`
+  (`scriveno-cli` was unpublished in May 2026), and Pi Coder is now called Pi
+  in the README and `AGENTS.md`, as humanizer renamed it.
 
 ### Verification
 

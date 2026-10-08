@@ -7,7 +7,7 @@ generically derivative. It also performs a separate read-only scan for
 suspicious Unicode provenance carriers in supplied text. No scripts, no
 dependencies, no network access; tools are read-only. It is the entry point
 for any AI coding tool that reads
-`AGENTS.md` (Codex, OpenCode, Antigravity, Pi Coder, Zed, and others).
+`AGENTS.md` (Codex, OpenCode, Antigravity, Pi, Zed, and others).
 
 It is the evaluative counterpart to the separate `humanizer` skill. This one
 diagnoses. It does not rewrite.
