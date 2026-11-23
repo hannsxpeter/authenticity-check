@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 190" width="1200" height="190" role="img" aria-labelledby="t d">
+  <title id="t">Achievements</title>
+  <desc id="d">Four achievement badges. First Read, Fair Witness, Still You, and Fresh Eyes.</desc>
+  <style>
+    .sans{font-family:"Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif}
+    .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+    .display{font-family:Newsreader,Georgia,"Times New Roman",serif}
+  </style>
+
+  <rect width="1200" height="190" fill="#0E1218"/>
+
+  <g transform="translate(40 20)">
+    <rect width="270" height="150" rx="10" fill="#151B24" stroke="#5CC8FF" stroke-width="2"/>
+    <text x="22" y="36" class="mono" font-size="11" font-weight="700" fill="#5CC8FF" letter-spacing="2">ACHIEVEMENT</text>
+    <text x="22" y="74" class="display" font-size="28" fill="#F4EFE4">First Read</text>
+    <text x="22" y="104" class="sans" font-size="13" fill="#A8B0C0">Ask if a text sounds like a bot.</text>
+    <text x="22" y="124" class="sans" font-size="13" fill="#A8B0C0">Get a band, a score, and spans.</text>
+  </g>
+
+  <g transform="translate(330 20)">
+    <rect width="270" height="150" rx="10" fill="#151B24" stroke="#3DDC97" stroke-width="2"/>
+    <text x="22" y="36" class="mono" font-size="11" font-weight="700" fill="#3DDC97" letter-spacing="2">ACHIEVEMENT</text>
+    <text x="22" y="74" class="display" font-size="28" fill="#F4EFE4">Fair Witness</text>
+    <text x="22" y="104" class="sans" font-size="13" fill="#A8B0C0">Pass 2 turns a false positive</text>
+    <text x="22" y="124" class="sans" font-size="13" fill="#A8B0C0">into human-marker credit.</text>
+  </g>
+
+  <g transform="translate(620 20)">
+    <rect width="270" height="150" rx="10" fill="#151B24" stroke="#B98CFF" stroke-width="2"/>
+    <text x="22" y="36" class="mono" font-size="11" font-weight="700" fill="#B98CFF" letter-spacing="2">ACHIEVEMENT</text>
+    <text x="22" y="74" class="display" font-size="28" fill="#F4EFE4">Still You</text>
+    <text x="22" y="104" class="sans" font-size="13" fill="#A8B0C0">Check a draft against your</text>
+    <text x="22" y="124" class="sans" font-size="13" fill="#A8B0C0">own VOICE.md in voice mode.</text>
+  </g>
+
+  <g transform="translate(910 20)">
+    <rect width="270" height="150" rx="10" fill="#151B24" stroke="#E8B84A" stroke-width="2"/>
+    <text x="22" y="36" class="mono" font-size="11" font-weight="700" fill="#E8B84A" letter-spacing="2">ACHIEVEMENT</text>
+    <text x="22" y="74" class="display" font-size="28" fill="#F4EFE4">Fresh Eyes</text>
+    <text x="22" y="104" class="sans" font-size="13" fill="#A8B0C0">Re-verify a revised draft</text>
+    <text x="22" y="124" class="sans" font-size="13" fill="#A8B0C0">with no target score carried.</text>
+  </g>
+</svg>

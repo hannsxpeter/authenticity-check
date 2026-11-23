@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t d">
+  <title id="t">Rogues gallery</title>
+  <desc id="d">Six families of tells drawn as pixel rogues. The Herald for inflated significance, The Salesman for promotional and evasive language, The Template for formulaic structure, The Thesaurus for lexical tics, The Dodger for syntactic tics, and The Chatbot for formatting and artifacts.</desc>
+  <style>
+    .sans{font-family:"Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif}
+    .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+  </style>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1C2433" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="600" fill="#0E1218"/>
+  <rect width="1200" height="600" fill="url(#grid)"/>
+  <rect x="0.5" y="0.5" width="1199" height="599" rx="10" fill="none" stroke="#2A3548"/>
+
+  <text x="40" y="46" class="mono" font-size="14" font-weight="700" fill="#5CC8FF" letter-spacing="3">ROGUES GALLERY</text>
+  <text x="40" y="76" class="sans" font-size="18" font-weight="600" fill="#E8E2D6">Six families of tells, 32 patterns. Every flag names its rogue.</text>
+
+  <!-- A: The Herald -->
+  <g transform="translate(40 100)">
+    <rect width="360" height="210" rx="6" fill="#151B24" stroke="#E8B84A" stroke-width="2"/>
+    <g transform="translate(22 30)">
+      <rect x="10" y="10" width="60" height="50" fill="#E8B84A"/>
+      <rect x="0" y="20" width="80" height="30" fill="#E8B84A"/>
+      <rect x="22" y="26" width="10" height="10" fill="#0E1218"/>
+      <rect x="48" y="26" width="10" height="10" fill="#0E1218"/>
+      <rect x="12" y="60" width="14" height="12" fill="#B88A2A"/>
+      <rect x="54" y="60" width="14" height="12" fill="#B88A2A"/>
+      <path d="M80 30h6v-6h8v-8h6v38h-6v-8h-8v-6h-6Z" fill="#F4EFE4"/>
+    </g>
+    <text x="134" y="44" class="mono" font-size="11" font-weight="700" fill="#E8B84A" letter-spacing="2">FAMILY A</text>
+    <text x="134" y="72" class="sans" font-size="20" font-weight="700" fill="#F4EFE4">The Herald</text>
+    <text x="134" y="94" class="sans" font-size="13" fill="#A8B0C0">Inflated significance</text>
+    <text x="134" y="116" class="mono" font-size="11" fill="#7F8BA3">PATTERNS 1-4</text>
+    <rect x="20" y="140" width="320" height="48" fill="#0E1218" stroke="#2A3548"/>
+    <text x="34" y="169" class="mono" font-size="13" fill="#E8B84A">"a pivotal cornerstone"</text>
+  </g>
+
+  <!-- B: The Salesman -->
+  <g transform="translate(430 100)">
+    <rect width="360" height="210" rx="6" fill="#151B24" stroke="#FF8A3D" stroke-width="2"/>
+    <g transform="translate(22 30)">
+      <rect x="10" y="10" width="60" height="50" fill="#FF8A3D"/>
+      <rect x="0" y="20" width="80" height="30" fill="#FF8A3D"/>
+      <rect x="22" y="26" width="10" height="10" fill="#0E1218"/>
+      <rect x="48" y="26" width="10" height="10" fill="#0E1218"/>
+      <rect x="34" y="40" width="12" height="6" fill="#F4EFE4"/>
+      <path d="M36 46h8v4h4v10h-16v-10h4Z" fill="#0E1218"/>
+      <rect x="12" y="60" width="14" height="12" fill="#B85A1E"/>
+      <rect x="54" y="60" width="14" height="12" fill="#B85A1E"/>
+      <rect x="20" y="0" width="40" height="10" fill="#2A3548"/>
+    </g>
+    <text x="134" y="44" class="mono" font-size="11" font-weight="700" fill="#FF8A3D" letter-spacing="2">FAMILY B</text>
+    <text x="134" y="72" class="sans" font-size="20" font-weight="700" fill="#F4EFE4">The Salesman</text>
+    <text x="134" y="94" class="sans" font-size="13" fill="#A8B0C0">Promotional and evasive</text>
+    <text x="134" y="116" class="mono" font-size="11" fill="#7F8BA3">PATTERNS 5-9</text>
+    <rect x="20" y="140" width="320" height="48" fill="#0E1218" stroke="#2A3548"/>
+    <text x="34" y="169" class="mono" font-size="13" fill="#FF8A3D">"it is important to note"</text>
+  </g>
+
+  <!-- C: The Template -->
+  <g transform="translate(820 100)">
+    <rect width="360" height="210" rx="6" fill="#151B24" stroke="#B98CFF" stroke-width="2"/>
+    <g transform="translate(22 30)">
+      <rect x="4" y="6" width="72" height="56" fill="#B98CFF"/>
+      <path d="M4 24h72M4 44h72M28 6v56M52 6v56" stroke="#7A55C4" stroke-width="3"/>
+      <rect x="14" y="12" width="10" height="10" fill="#0E1218"/>
+      <rect x="56" y="12" width="10" height="10" fill="#0E1218"/>
+      <rect x="12" y="62" width="14" height="12" fill="#7A55C4"/>
+      <rect x="54" y="62" width="14" height="12" fill="#7A55C4"/>
+    </g>
+    <text x="134" y="44" class="mono" font-size="11" font-weight="700" fill="#B98CFF" letter-spacing="2">FAMILY C</text>
+    <text x="134" y="72" class="sans" font-size="20" font-weight="700" fill="#F4EFE4">The Template</text>
+    <text x="134" y="94" class="sans" font-size="13" fill="#A8B0C0">Formulaic structure</text>
+    <text x="134" y="116" class="mono" font-size="11" fill="#7F8BA3">PATTERNS 10-15</text>
+    <rect x="20" y="140" width="320" height="48" fill="#0E1218" stroke="#2A3548"/>
+    <text x="34" y="169" class="mono" font-size="13" fill="#B98CFF">"not just a tool, but a movement"</text>
+  </g>
+
+  <!-- D: The Thesaurus -->
+  <g transform="translate(40 330)">
+    <rect width="360" height="210" rx="6" fill="#151B24" stroke="#5CC8FF" stroke-width="2"/>
+    <g transform="translate(22 30)">
+      <rect x="6" y="4" width="68" height="62" fill="#5CC8FF"/>
+      <rect x="6" y="4" width="10" height="62" fill="#2E8CBF"/>
+      <rect x="24" y="18" width="10" height="10" fill="#0E1218"/>
+      <rect x="50" y="18" width="10" height="10" fill="#0E1218"/>
+      <rect x="24" y="40" width="40" height="4" fill="#0E1218"/>
+      <rect x="24" y="50" width="30" height="4" fill="#0E1218"/>
+      <rect x="14" y="66" width="14" height="10" fill="#2E8CBF"/>
+      <rect x="52" y="66" width="14" height="10" fill="#2E8CBF"/>
+    </g>
+    <text x="134" y="44" class="mono" font-size="11" font-weight="700" fill="#5CC8FF" letter-spacing="2">FAMILY D</text>
+    <text x="134" y="72" class="sans" font-size="20" font-weight="700" fill="#F4EFE4">The Thesaurus</text>
+    <text x="134" y="94" class="sans" font-size="13" fill="#A8B0C0">Lexical tics</text>
+    <text x="134" y="116" class="mono" font-size="11" fill="#7F8BA3">PATTERNS 16-19</text>
+    <rect x="20" y="140" width="320" height="48" fill="#0E1218" stroke="#2A3548"/>
+    <text x="34" y="169" class="mono" font-size="13" fill="#5CC8FF">"delve into the rich tapestry"</text>
+  </g>
+
+  <!-- E: The Dodger -->
+  <g transform="translate(430 330)">
+    <rect width="360" height="210" rx="6" fill="#151B24" stroke="#FF6FB5" stroke-width="2"/>
+    <g transform="translate(22 30)">
+      <rect x="18" y="10" width="56" height="50" fill="#FF6FB5"/>
+      <rect x="10" y="20" width="72" height="30" fill="#FF6FB5"/>
+      <rect x="40" y="26" width="10" height="10" fill="#0E1218"/>
+      <rect x="62" y="26" width="10" height="10" fill="#0E1218"/>
+      <rect x="20" y="60" width="14" height="12" fill="#B84A82"/>
+      <rect x="60" y="60" width="14" height="12" fill="#B84A82"/>
+      <path d="M0 22h6v6H0zM0 36h6v6H0zM0 50h6v6H0z" fill="#FF6FB5" fill-opacity="0.5"/>
+    </g>
+    <text x="134" y="44" class="mono" font-size="11" font-weight="700" fill="#FF6FB5" letter-spacing="2">FAMILY E</text>
+    <text x="134" y="72" class="sans" font-size="20" font-weight="700" fill="#F4EFE4">The Dodger</text>
+    <text x="134" y="94" class="sans" font-size="13" fill="#A8B0C0">Syntactic tics</text>
+    <text x="134" y="116" class="mono" font-size="11" fill="#7F8BA3">PATTERNS 20-21</text>
+    <rect x="20" y="140" width="320" height="48" fill="#0E1218" stroke="#2A3548"/>
+    <text x="34" y="169" class="mono" font-size="13" fill="#FF6FB5">"serves as a testament to"</text>
+  </g>
+
+  <!-- F: The Chatbot -->
+  <g transform="translate(820 330)">
+    <rect width="360" height="210" rx="6" fill="#151B24" stroke="#FF5C6C" stroke-width="2"/>
+    <g transform="translate(22 30)">
+      <rect x="38" y="-4" width="4" height="12" fill="#A8B0C0"/>
+      <rect x="34" y="-10" width="12" height="8" fill="#FF5C6C"/>
+      <rect x="8" y="8" width="64" height="48" fill="#A8B0C0"/>
+      <rect x="16" y="16" width="48" height="26" fill="#0E1218"/>
+      <rect x="22" y="22" width="10" height="10" fill="#FF5C6C"/>
+      <rect x="48" y="22" width="10" height="10" fill="#FF5C6C"/>
+      <rect x="18" y="56" width="44" height="10" fill="#7F8BA3"/>
+      <rect x="14" y="66" width="14" height="10" fill="#7F8BA3"/>
+      <rect x="52" y="66" width="14" height="10" fill="#7F8BA3"/>
+    </g>
+    <text x="134" y="44" class="mono" font-size="11" font-weight="700" fill="#FF5C6C" letter-spacing="2">FAMILY F</text>
+    <text x="134" y="72" class="sans" font-size="20" font-weight="700" fill="#F4EFE4">The Chatbot</text>
+    <text x="134" y="94" class="sans" font-size="13" fill="#A8B0C0">Formatting and artifacts</text>
+    <text x="134" y="116" class="mono" font-size="11" fill="#7F8BA3">PATTERNS 22-32</text>
+    <rect x="20" y="140" width="320" height="48" fill="#0E1218" stroke="#2A3548"/>
+    <text x="34" y="169" class="mono" font-size="13" fill="#FF5C6C">"I hope this helps! Let me know"</text>
+  </g>
+
+  <text x="40" y="574" class="mono" font-size="12" fill="#3DDC97">Pass 2 holds the veto: a lone weak signal is dropped, and a real human marker earns credit.</text>
+</svg>

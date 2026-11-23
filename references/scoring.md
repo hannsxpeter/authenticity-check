@@ -19,8 +19,8 @@ section and score only the prose evidence from Passes 1-4.
 
 Three bands. The vocabulary is chosen on purpose to sit alongside the
 humanizer skill's low / medium / high density language, so that when the two
-skills are bundled into the future `voiceprint` product the reports compose
-without a translation layer. Humanizer's density (how AI-marked) and this
+skills are bundled in the `voiceprint` product the reports compose without a
+translation layer. Humanizer's density (how AI-marked) and this
 skill's authenticity (how human it reads) are inverse views of the same axis.
 
 - **Reads human.** The text reads as a person's own work. Few or no surviving

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 290" width="1200" height="290" role="img" aria-labelledby="t d">
+  <title id="t">The case file</title>
+  <desc id="d">Level map of one run. Step 0 baseline, Step 0a provenance, Step 0b density, Pass 1 catalog, Pass 2 false-positive audit with veto power, Pass 3 internal consistency, Pass 4 voice deviation, then the report.</desc>
+  <style>
+    .sans{font-family:"Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif}
+    .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+  </style>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1C2433" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="290" fill="#0E1218"/>
+  <rect width="1200" height="290" fill="url(#grid)"/>
+  <rect x="0.5" y="0.5" width="1199" height="289" rx="10" fill="none" stroke="#2A3548"/>
+
+  <text x="40" y="46" class="mono" font-size="14" font-weight="700" fill="#5CC8FF" letter-spacing="3">THE CASE FILE</text>
+  <text x="1160" y="46" class="mono" font-size="12" fill="#7F8BA3" text-anchor="end" letter-spacing="1.5">ONE RUN / SEVEN STAGES / ONE REPORT</text>
+
+  <line x1="90" y1="145" x2="1112" y2="145" stroke="#2A3548" stroke-width="4" stroke-dasharray="8 6"/>
+  <rect x="84" y="139" width="12" height="12" fill="#5CC8FF">
+    <animate attributeName="x" values="84;1106;84" dur="8s" repeatCount="indefinite"/>
+  </rect>
+
+  <g class="sans">
+    <rect x="28" y="100" width="124" height="80" fill="#151B24" stroke="#5CC8FF" stroke-width="2"/>
+    <text x="90" y="126" class="mono" font-size="11" font-weight="700" fill="#5CC8FF" text-anchor="middle" letter-spacing="1.5">STEP 0</text>
+    <text x="90" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Baseline</text>
+    <text x="90" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">generic or voice</text>
+
+    <rect x="174" y="100" width="124" height="80" fill="#151B24" stroke="#5CC8FF" stroke-width="2"/>
+    <text x="236" y="126" class="mono" font-size="11" font-weight="700" fill="#5CC8FF" text-anchor="middle" letter-spacing="1.5">STEP 0A</text>
+    <text x="236" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Provenance</text>
+    <text x="236" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">invisible Unicode</text>
+
+    <rect x="320" y="100" width="124" height="80" fill="#151B24" stroke="#5CC8FF" stroke-width="2"/>
+    <text x="382" y="126" class="mono" font-size="11" font-weight="700" fill="#5CC8FF" text-anchor="middle" letter-spacing="1.5">STEP 0B</text>
+    <text x="382" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Density</text>
+    <text x="382" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">set the scrutiny</text>
+
+    <rect x="466" y="100" width="124" height="80" fill="#151B24" stroke="#FF5C6C" stroke-width="2"/>
+    <text x="528" y="126" class="mono" font-size="11" font-weight="700" fill="#FF5C6C" text-anchor="middle" letter-spacing="1.5">PASS 1</text>
+    <text x="528" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Catalog</text>
+    <text x="528" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">32 patterns</text>
+
+    <rect x="612" y="100" width="124" height="80" fill="#10261E" stroke="#3DDC97" stroke-width="3"/>
+    <text x="674" y="126" class="mono" font-size="11" font-weight="700" fill="#3DDC97" text-anchor="middle" letter-spacing="1.5">PASS 2</text>
+    <text x="674" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Audit</text>
+    <text x="674" y="204" class="mono" font-size="10" fill="#3DDC97" text-anchor="middle">veto power</text>
+
+    <rect x="758" y="100" width="124" height="80" fill="#151B24" stroke="#B98CFF" stroke-width="2"/>
+    <text x="820" y="126" class="mono" font-size="11" font-weight="700" fill="#B98CFF" text-anchor="middle" letter-spacing="1.5">PASS 3</text>
+    <text x="820" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Consistency</text>
+    <text x="820" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">needs 3+ chunks</text>
+
+    <rect x="904" y="100" width="124" height="80" fill="#151B24" stroke="#B98CFF" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="966" y="126" class="mono" font-size="11" font-weight="700" fill="#B98CFF" text-anchor="middle" letter-spacing="1.5">PASS 4</text>
+    <text x="966" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Voice</text>
+    <text x="966" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">voice mode only</text>
+
+    <rect x="1050" y="100" width="124" height="80" fill="#2A2412" stroke="#E8B84A" stroke-width="3"/>
+    <text x="1112" y="126" class="mono" font-size="11" font-weight="700" fill="#E8B84A" text-anchor="middle" letter-spacing="1.5">REPORT</text>
+    <text x="1112" y="156" font-size="16" font-weight="700" fill="#F4EFE4" text-anchor="middle">Verdict</text>
+    <text x="1112" y="204" class="mono" font-size="10" fill="#A8B0C0" text-anchor="middle">band and score</text>
+  </g>
+
+  <text x="40" y="256" class="mono" font-size="12" fill="#7F8BA3">Provenance findings ride in their own channel and never move the prose score.</text>
+</svg>
