@@ -1,0 +1,71 @@
+name: Publish to npm
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to publish (for example v1.3.0). Defaults to the pushed tag.'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ inputs.tag || github.ref }}
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing (OIDC) needs npm 11.5.1 or newer. The trusted
+      # publisher on npmjs.com is bound to this repository and this file name.
+      - name: Use an npm that supports trusted publishing
+        run: npm install -g npm@11 && npm --version
+
+      - name: Verify release identity
+        shell: bash
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          tag="${INPUT_TAG:-$GITHUB_REF_NAME}"
+          version="$(node -p "require('./package.json').version")"
+          if [[ "${tag#v}" != "$version" ]]; then
+            echo "Tag $tag does not match package.json version $version."
+            exit 1
+          fi
+          git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          if ! git merge-base --is-ancestor HEAD refs/remotes/origin/main; then
+            echo "Tagged commit is not on main."
+            exit 1
+          fi
+
+      - name: Drift check
+        run: python3 .github/scripts/check_drift.py
+
+      - name: Publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(node -p "require('./package.json').version")"
+          if npm view "@hxp-tools/authenticity-check@$version" version >/dev/null 2>&1; then
+            echo "::notice::@hxp-tools/authenticity-check@$version is already published; nothing to do."
+            exit 0
+          fi
+          npm publish --provenance --access public

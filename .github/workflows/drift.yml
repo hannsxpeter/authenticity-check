@@ -20,3 +20,18 @@ jobs:
           persist-credentials: false
       - name: Check that the docs agree with each other
         run: python3 .github/scripts/check_drift.py
+      - name: Installer smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          export CLAUDE_SKILLS_DIR="$tmp/claude" CODEX_SKILLS_DIR="$tmp/codex"
+          export CURSOR_SKILLS_DIR="$tmp/cursor" WINDSURF_SKILLS_DIR="$tmp/windsurf"
+          node bin/authenticity-check.js all
+          for dir in claude codex cursor windsurf; do
+            test -f "$tmp/$dir/authenticity-check/SKILL.md"
+            test -f "$tmp/$dir/authenticity-check/references/tell-patterns.md"
+          done
+          node bin/authenticity-check.js --uninstall
+          test -z "$(find "$tmp" -type f)"
+          npm pack --dry-run

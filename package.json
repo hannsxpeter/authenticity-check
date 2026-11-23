@@ -1,0 +1,49 @@
+{
+  "name": "@hxp-tools/authenticity-check",
+  "version": "1.3.0",
+  "description": "Human or machine? Get an honest read. A diagnostic skill for AI coding agents that scores text and flags AI-sounding spans. Never rewrites.",
+  "keywords": [
+    "agent-skills",
+    "ai-agents",
+    "ai-detection",
+    "ai-writing",
+    "authenticity",
+    "claude-code",
+    "codex",
+    "cursor",
+    "developer-tools",
+    "humanizer",
+    "writing"
+  ],
+  "homepage": "https://github.com/hannsxpeter/authenticity-check#readme",
+  "bugs": {
+    "url": "https://github.com/hannsxpeter/authenticity-check/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannsxpeter/authenticity-check.git"
+  },
+  "license": "MIT",
+  "author": "hannsxpeter",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "authenticity-check": "bin/authenticity-check.js"
+  },
+  "files": [
+    "bin",
+    "assets",
+    "references",
+    "SKILL.md",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "python3 .github/scripts/check_drift.py"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

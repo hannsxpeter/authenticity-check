@@ -1,91 +1,126 @@
 # authenticity-check
 
-![version](https://img.shields.io/badge/version-1.2.3-blue)
+![Arcade title screen: AUTHENTICITY CHECK. Human or machine? Get an honest read. npx @hxp-tools/authenticity-check.](assets/hero.svg)
+
+[![npm](https://img.shields.io/npm/v/@hxp-tools/authenticity-check.svg)](https://www.npmjs.com/package/@hxp-tools/authenticity-check)
+![version](https://img.shields.io/badge/version-1.3.0-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
-![type](https://img.shields.io/badge/type-pure--prompt%20skill-purple)
-![dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)
 ![mode](https://img.shields.io/badge/mode-diagnostic%20only-red)
 ![tools](https://img.shields.io/badge/works%20with-13%20AI%20coding%20tools-teal)
-![release](https://img.shields.io/github/v/release/hannsxpeter/authenticity-check?label=release&color=blue)
 [![drift check](https://github.com/hannsxpeter/authenticity-check/actions/workflows/drift.yml/badge.svg)](https://github.com/hannsxpeter/authenticity-check/actions/workflows/drift.yml)
 
-A standalone, pure-prompt skill that scores how authentically a piece of text
-reads as the work of a real human author, and flags the specific spans that
-read as AI-generated, AI-templated, or generically derivative. It also scans
-supplied text for suspicious Unicode provenance carriers and reports them in
-a separate evidence channel. It is just instructions: `SKILL.md` plus a few
-reference files. No scripts, no dependencies, no network access. Its tools
-are read-only by design.
+**Human or machine? Get an honest read.**
 
-It is the evaluative counterpart to the `humanizer` skill. This one
-diagnoses. It does not rewrite.
+Paste any text and ask whether it sounds like a bot. You get a band, a 0-100
+score, the exact spans that read as AI-generated or templated, the spans that
+read as a person, and a separate scan for hidden Unicode carriers. The skill
+is plain markdown with read-only tools. It scores and flags. It never
+rewrites.
 
-## Where this comes from
+Part of [`@hxp-tools`](https://www.npmjs.com/org/hxp-tools). The read-only
+half of a pair with [humanizer](https://github.com/hannsxpeter/humanizer).
 
-This skill is the diagnostic half of a pair. Its detection criteria descend
-from the voice-preservation logic that powers
-[Scriveno](https://github.com/hannsxpeter/scriveno) (formerly Scriven), an
-AI-native longform writing, publishing, and translation pipeline whose core
-promise is that drafted prose should sound like the writer, not like AI.
-[`humanizer`](https://github.com/hannsxpeter/humanizer) lifted the de-slop,
-restraint, and voice-matching layer of that pipeline into a standalone
-rewrite skill. `authenticity-check` is the read-only counterpart: it applies
-the same catalog and the same restraint to *diagnose* rather than transform,
-and it vendors humanizer's criteria so the two agree on what a tell is. If
-you want the rewrite, use humanizer. If you want the whole writing pipeline,
-see Scriveno (npm package `scriveno`, run with `npx scriveno@latest`).
+---
 
-## What it does
+## Press start
 
-Given a piece of text, it returns:
+```bash
+npx @hxp-tools/authenticity-check@latest
+```
 
-- an authenticity band (Reads human / Mixed signals / Reads AI-generated),
-- a 0-100 authenticity score (higher means it reads more like a person's own
-  work),
-- span-level flags, each with the reason it reads as AI-generated,
-  AI-templated, or derivative,
-- a read-only provenance preflight for suspicious invisible or format Unicode,
-- a "Reads as human" section naming what it deliberately did not flag,
-- and a caveat that the score is a heuristic read, not proof.
+That installs the skill for every supported tool it finds (Claude Code,
+Codex, Cursor, Windsurf). Name tools to pick them (`claude codex`), use `all`
+for every one, and `--uninstall` to remove exactly what it installed. The
+installer needs Node 18 or newer; the skill itself runs no code.
 
-It runs in generic mode by default, and in a voice-deviation mode when you
-ask whether a draft still sounds like you (or a named author) and a voice
-sample or profile is available.
+Then restart your agent and ask:
 
-## Text provenance preflight
+```text
+does this sound like a bot? <paste text>
+```
 
-Every run includes a separate scan for inspectable text carriers such as
-zero-width and format controls, bidi controls, tag characters, variation
-selectors, and unusual spaces. Candidate characters go through a mandatory
-context audit so normal multilingual orthography, directional text,
-byte-order marks, and load-bearing visible sequences are not mislabeled.
+You do not need to say "authenticity check." Oblique cues work too: "this
+feels generated," "rate the AI-ness," "does this still sound like me," or
+"is there invisible Unicode in this."
 
-Version 1.2.0 adapted only the Unicode carrier taxonomy and context guardrails
-from the MIT-licensed
-[`watermarks-remover`](https://github.com/guillaumemeyer/watermarks-remover)
-project. Those two elements are represented here as pure-prompt instructions
-for a read-only inspection of supplied text. The link is source attribution,
-not a claim that this skill ports, wraps, or integrates the upstream tool.
-This is a point-in-time adaptation from upstream v0.4.0 at commit
-`28eca2d91fd4`, not an ongoing feature-parity or compatibility promise.
+For other tools, clone this repo and keep its adapter file beside `SKILL.md`
+and `references/` (see [Supported tools](#supported-tools)).
 
-| Included in `authenticity-check` v1.2.0 | Not included |
+---
+
+## The case file
+
+![Level map: baseline, provenance, density, catalog, audit, consistency, voice, verdict.](assets/case-map.svg)
+
+| Stage | What happens |
 |---|---|
-| Unicode carrier classes and a mandatory context audit | Deterministic Python scripts, services, or other upstream executable code |
-| Escaped-codepoint and context reporting | Deletion, normalization, substitution, rewriting, or re-saving content |
-| Inspection of carrier candidates exposed in supplied text | Binary-file inspection or C2PA, EXIF, XMP, and document-metadata inspection or stripping |
-| A provenance evidence channel separate from the prose score | Statistical token-watermark detection or removal, and image-watermark scoring or removal |
+| Step 0: Baseline | Generic mode, or voice mode when a sample, named author, or `VOICE.md` exists |
+| Step 0a: Provenance | Read-only scan for invisible and format Unicode, with a context audit |
+| Step 0b: Density | Sets scrutiny low, medium, or high so human-first text is not over-flagged |
+| Pass 1: Catalog | Scans against 32 patterns in six families |
+| Pass 2: Audit | Mandatory false-positive audit with veto power |
+| Pass 3: Consistency | Read-only stylometric and drift checks across three or more chunks |
+| Pass 4: Voice | Deviation from the target voice, in voice mode only |
+| Report | Band, score, provenance, flags, human markers, basis, caveats, next step |
 
-The preflight considers only carrier candidates that the agent can inspect in
-supplied text. It does not inspect images, audio, or video. Provenance findings
-are reported separately and do not change the prose authenticity score by
-themselves.
+---
 
-## The pairing with humanizer (a pair, never a merge)
+## Rogues gallery
 
-`authenticity-check` and [`humanizer`](https://github.com/hannsxpeter/humanizer)
-are designed to be used together, as separate skills, with a human deciding
-between them:
+![Six pixel rogues: The Herald, The Salesman, The Template, The Thesaurus, The Dodger, The Chatbot.](assets/rogues.svg)
+
+Every flag names its family and pattern from
+`references/tell-patterns.md`, so you can see why a span was caught. The
+guard on the other side is `references/do-not-flag.md`: a lone weak signal is
+dropped, and a real human marker (a specific number, a mixed feeling, an odd
+rhythm) turns into credit.
+
+---
+
+## Scoreboard
+
+![Score scale: Reads AI-generated 0-59, Mixed signals 60-84, Reads human 85-100, with pins for the worked examples.](assets/scoreboard.svg)
+
+```text
+### Authenticity report
+Mode: generic
+Scrutiny: high (from the density pre-check)
+
+Authenticity: Reads AI-generated   Score: 18/100
+
+### Flagged spans
+- "stands as a pivotal cornerstone" -> Family A, significance inflation
+- "delve into the rich tapestry," "leveraging robust" -> Family D, AI-vocabulary clustering
+- Whole-passage: uniform sentence length, the core machine fingerprint
+
+### Reads as human (deliberately not flagged)
+- Nothing qualifies. No specific detail, number, or mixed feeling to credit.
+```
+
+That is an excerpt of Example 1. `references/examples.md` holds six worked
+diagnostic runs, including careful human prose that must not be scored low
+and laundered AI prose (clean vocabulary, uniform rhythm) that must not be
+scored high.
+
+There is no high-score table. The score is a read, not a target, and a low
+score is not an accusation against anyone.
+
+---
+
+## Achievements
+
+![Achievement badges: First Read, Fair Witness, Still You, Fresh Eyes.](assets/achievements.svg)
+
+| Achievement | Earned by |
+|---|---|
+| First Read | Asking whether any text sounds like a bot and getting the full report |
+| Fair Witness | Seeing Pass 2 veto a false positive and credit a human marker instead |
+| Still You | Running voice mode against your own `VOICE.md` or a pasted sample |
+| Fresh Eyes | Re-verifying a revised draft with a fresh read and no target score |
+
+---
+
+## Diagnose, then decide
 
 ```
 authenticity-check  ->  you read the flags and decide  ->  humanizer
@@ -94,161 +129,115 @@ authenticity-check  ->  you read the flags and decide  ->  humanizer
         |________________ re-verify, fresh read _________________|
 ```
 
-They are deliberately kept apart. A single tool that scores text and then
-rewrites it to raise its own score is a detector-gaming loop: it optimizes
-prose against a metric instead of improving it for a reader. The humanizer
-skill explicitly refuses that loop. Keeping diagnosis and transformation in
-two skills, with a person in between, is what prevents the loop from forming.
-So this skill never rewrites, never carries a "target score" into a rewrite,
-and never instructs humanizer how to move a number. The re-verify step is a
-fresh diagnosis of the revised text, not a continuation of the first.
+A tool that scores text and then rewrites it to raise its own score is a
+detector-gaming loop. Keeping diagnosis and rewriting in two skills, with a
+person in between, is what stops that loop from forming. So this skill never
+rewrites, never removes marks, and never hands a target score to a rewrite.
 
-## voiceprint (future bundle, designed for, not built here)
+[voiceprint](https://github.com/hannsxpeter/voiceprint) bundles both skills
+into one fixed, single-pass run. The criteria descend from
+[Scriveno](https://github.com/hannsxpeter/scriveno), whose core promise is
+that drafted prose should sound like the writer, not like AI.
 
-A future product, `voiceprint`, will bundle `humanizer` (transform) and
-`authenticity-check` (diagnose) into one combined offering. This repo is
-built to compose cleanly into that bundle: no assumption that it is the only
-skill installed, clean separation of the skill from its criteria files, and
-no global names that collide with humanizer (the skill name, the Cursor rule
-filename, and the frontmatter `name` are all `authenticity-check`). The band
-vocabulary is chosen to sit alongside humanizer's density language so the two
-reports compose without a translation layer. `voiceprint` is not built here;
-this repo simply does not block it.
+## Text provenance
 
-## Vendored criteria and the sync obligation
+Step 0a classifies inspectable carriers in supplied text (zero-width and
+format controls, bidi controls, tag characters, variation selectors, unusual
+spaces) and audits each one in context, so normal multilingual orthography
+is not mislabeled. Findings go in their own report section and never move the
+prose score. It does not inspect files, metadata, images, audio, or video, and
+it does not detect statistical token watermarks. Full limits are in
+`references/provenance-signals.md`.
 
-The detection criteria live canonically in the `humanizer` repo
-(`references/tell-patterns.md`, `references/do-not-flag.md`, and
-`references/voice-matching.md`). Because `authenticity-check` is a standalone
-repo and the humanizer repo must stay untouched, this repo vendors synced
-copies of those three files into its own `references/` directory. Each
-vendored file carries a header stamp recording that it is a synced copy, that
-its canonical upstream is the humanizer repo, and the obligations below.
-
-- **These three files are synced copies, not the source of truth:**
-  `references/tell-patterns.md`, `references/do-not-flag.md`,
-  `references/voice-matching.md`. Last synced 2026-10-07 from humanizer
-  commit `09bf76d`. The stamp records the last criteria sync, not every
-  humanizer commit; humanizer changes that do not touch the three vendored
-  files (for example, adapter additions) do not require a re-vendor.
-- **Re-sync when humanizer's criteria change.** Do not edit the criteria in
-  this repo independently. A fix belongs upstream in humanizer and is then
-  re-vendored here. Editing the copies in place makes the two repos drift and
-  the diagnose/rewrite pair stop agreeing on what a tell is.
-- **Reconciliation is planned.** When the `voiceprint` product is built,
-  these vendored copies and humanizer's originals will be collapsed into a
-  single shared source of truth. Until then, the header stamp on each file is
-  the contract.
-
-`references/scoring.md` and `references/examples.md` are native to this repo
-(humanizer has no score and no diagnostic examples) and are not synced.
+The carrier taxonomy and context guardrails were adapted, as prompt
+instructions only, from the MIT-licensed
+[watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)
+v0.4.0 at commit `28eca2d91fd4`. No upstream code is included, and no
+removal or normalization is performed.
 
 ## Supported tools
 
 | Tool | File it reads | Install |
 |---|---|---|
-| Claude Code | `SKILL.md` | `cp -r` this repo to `~/.claude/skills/authenticity-check/`, or use the repo in-project |
-| Cursor | `.cursor/rules/authenticity-check.mdc` | Open this repo in Cursor, or copy `.cursor/rules/authenticity-check.mdc` + `SKILL.md` + `references/` into your project |
-| Codex | `AGENTS.md` | Clone this repo into (or beside) your project; Codex reads `AGENTS.md` |
-| Antigravity | `AGENTS.md` | Same as Codex: keep `AGENTS.md` + `SKILL.md` + `references/` in the workspace |
-| Gemini CLI | `GEMINI.md` | Keep `GEMINI.md` + `SKILL.md` + `references/` in the project Gemini runs in |
-| Pi | `AGENTS.md` | Point Pi at this repo / its `AGENTS.md` |
+| Claude Code | `SKILL.md` | `npx @hxp-tools/authenticity-check claude`, or use the repo in-project |
+| Cursor | `.cursor/rules/authenticity-check.mdc` | `npx @hxp-tools/authenticity-check cursor`, or copy the rule + `SKILL.md` + `references/` |
+| Codex | `AGENTS.md` | `npx @hxp-tools/authenticity-check codex`, or keep `AGENTS.md` in the project |
+| Antigravity | `AGENTS.md` | Keep `AGENTS.md` + `SKILL.md` + `references/` in the workspace |
+| Gemini CLI | `GEMINI.md` | Keep `GEMINI.md` + `SKILL.md` + `references/` in the project |
+| Pi | `AGENTS.md` | Point Pi at this repo or its `AGENTS.md` |
 | OpenCode | `AGENTS.md` or `SKILL.md` | Copy the skill into OpenCode's skills directory, or keep `AGENTS.md` in the project |
-| GitHub Copilot | `.github/copilot-instructions.md` | Copy `.github/copilot-instructions.md` + `SKILL.md` + `references/` into the target repository |
-| Windsurf | `.windsurfrules` | Keep `.windsurfrules` + `SKILL.md` + `references/` in the project Windsurf opens |
-| Cline | `.clinerules` | Keep `.clinerules` + `SKILL.md` + `references/` in the workspace Cline runs in |
-| Continue | `.continue/rules/authenticity-check.md` | Keep `.continue/rules/authenticity-check.md` + `SKILL.md` + `references/` in the project |
-| Zed | `AGENTS.md` or `.continue/rules/authenticity-check.md` | Zed reads `AGENTS.md` (already present); the Continue rule also applies if used |
-| Aider | `CONVENTIONS.md` | `aider --read CONVENTIONS.md`, or set `read: CONVENTIONS.md` in `.aider.conf.yml`; keep `SKILL.md` + `references/` in the repo |
+| GitHub Copilot | `.github/copilot-instructions.md` | Copy it + `SKILL.md` + `references/` into the target repository |
+| Windsurf | `.windsurfrules` | `npx @hxp-tools/authenticity-check windsurf`, or keep `.windsurfrules` in the project |
+| Cline | `.clinerules` | Keep `.clinerules` + `SKILL.md` + `references/` in the workspace |
+| Continue | `.continue/rules/authenticity-check.md` | Keep the rule + `SKILL.md` + `references/` in the project |
+| Zed | `AGENTS.md` or `.continue/rules/authenticity-check.md` | Zed reads `AGENTS.md`, already present |
+| Aider | `CONVENTIONS.md` | `aider --read CONVENTIONS.md`; keep `SKILL.md` + `references/` in the repo |
 
-The Cursor rule and the frontmatter `name` are `authenticity-check`, distinct
-from humanizer's `humanizer`, so both skills can be installed side by side
-without collision. Every adapter points the agent at the same `SKILL.md` and
-`references/`, so the workflow is identical across tools. The 13-tool count
-includes Zed as a distinct host even though Zed reads adapter files already
-present (`AGENTS.md` or the Continue rule); no Zed-specific adapter is needed.
+Every adapter points at the same `SKILL.md` and `references/`, so the method
+is identical across tools. All names are `authenticity-check`, so it installs
+side by side with humanizer without collision.
 
-## Usage
+## Vendored criteria
 
-Ask, in plain language, whether a text is authentic, whether it reads like AI
-or like a person, how human a passage sounds, which parts sound
-machine-written, whether your draft still sounds like you, or whether pasted
-text contains suspicious invisible Unicode that might carry a provenance
-mark. You do not need to say "authenticity check." Oblique cues
-("does this sound like a bot," "something about this feels generated")
-trigger it too.
-
-For a "does this still sound like me" check, do one of:
-
-- paste a sample of the target writing,
-- name a well-known author, or
-- keep a `VOICE.md` (schema in `references/voice-matching.md`) or a
-  `STYLE-GUIDE.md` in the project; it is discovered automatically.
-
-Every run returns the report: band and score, provenance signals, flagged
-spans, what was deliberately not flagged, the score basis, a caveat, and a
-next step. It never returns rewritten or cleaned prose.
+`references/tell-patterns.md`, `references/do-not-flag.md`, and
+`references/voice-matching.md` are synced copies of humanizer's criteria, so
+the two skills agree on what a tell is. Last synced 2026-10-07 from humanizer
+commit `09bf76d`. Do not edit them here: fix them upstream in humanizer, then
+re-vendor. Each file's header stamp is the contract.
+`references/scoring.md`, `references/examples.md`, and
+`references/provenance-signals.md` are native to this repo.
 
 ## Verification
 
-`evals/evals.json` holds the verification cases (AI-heavy text,
-voice deviation, restraint, detector-evasion refusal, an oblique trigger, a
+`evals/evals.json` holds nine verification cases: AI-heavy text, voice
+deviation, restraint, a detector-evasion refusal, an oblique trigger, a
 diagnose-then-"just fix it" boundary, a relocated signature, a suspicious
-Unicode carrier, and a legitimate script joiner). `evals/RESULTS.md`
-records the full v1.1.1 prose regression baseline and the focused v1.2.0
-provenance forward test. Every recorded run used an isolated diagnosis with no
-access to the expected answer. The regression set exists because the hardest
-case is the one that matters most: AI prose with the slop vocabulary removed
-but the uniform rhythm kept must still read low, while genuine careful human
-prose, even when formal and clean, must not be over-flagged. These files are
-documentation and verification only; they are not part of the runtime skill.
+Unicode carrier, and a legitimate script joiner. `evals/RESULTS.md` records
+the blind runs. Neither is part of the runtime skill.
 
-On short inputs (a single paragraph or two), the internal-consistency pass
-(Pass 3) needs at least three comparable chunks and is skipped; Step 0a,
-Step 0b, and Passes 1-2 carry the read, with the relocated-signature override
-holding short marker-free uniform inputs in the low band.
-
-A drift check (`.github/scripts/check_drift.py`) runs on every pull request
-and every push to `main`. It fails when versions, catalog and example counts,
-the evals, what each tool adapter mentions, the vendored criteria headers and
-sync stamps, file references, the README layout and anchors, or house style
-drift apart. Run `python3 .github/scripts/check_drift.py` before you open a
-pull request.
+A drift check runs on every pull request and every push to `main`. It fails
+when versions, counts, evals, adapters, vendored stamps, file references, this
+README's layout, the installer, or house style drift apart. Run `npm test`
+(or `python3 .github/scripts/check_drift.py`) before you open a pull request.
 
 ## Scope
 
 This skill gives an honest read of how authentically text reads as a person's
-work and a read-only report of inspectable text-provenance carriers. It is not
-designed or tuned to defeat plagiarism checkers or AI-detection systems, and
-it names no detector. Requests framed as getting AI work past a graded or
-contractual assessment are reframed toward the honest diagnostic the skill
-actually serves. The diagnostic-only boundary is part of that guarantee:
-because the skill never rewrites, removes provenance, or carries a score into
-a transformation, it cannot be turned into a score-then-rewrite gaming loop.
+work. It is not built or tuned to defeat plagiarism checkers or AI-detection
+systems, and it names no detector. Requests to get AI work past a graded or
+contractual assessment are reframed toward that honest read.
 
 ## Layout
 
 ```
-SKILL.md                          orchestrator: workflow, guardrails, output contract
-AGENTS.md                         cross-tool entry point (Codex, Antigravity, OpenCode, Pi)
-GEMINI.md                         Gemini CLI context
-.cursor/rules/authenticity-check.mdc  Cursor project rule (named to not collide with humanizer)
-.github/copilot-instructions.md   GitHub Copilot instructions
-.windsurfrules                    Windsurf rules
-.clinerules                       Cline rules
-.continue/rules/authenticity-check.md  Continue / Zed rule
-CONVENTIONS.md                    Aider conventions
-CHANGELOG.md                      release history
-references/tell-patterns.md       vendored, synced from humanizer: the 32-pattern catalog (Pass 1)
-references/do-not-flag.md         vendored, synced from humanizer: false positives, human markers (Pass 2)
-references/voice-matching.md      vendored, synced from humanizer: voice reading (Pass 4)
-references/provenance-signals.md  native: Unicode provenance classes, context audit, limits (Step 0a)
-references/scoring.md             native: band + 0-100 rubric, internal-consistency heuristics
+SKILL.md                          the skill: workflow, guardrails, output contract
+references/tell-patterns.md       vendored from humanizer: 32-pattern catalog (Pass 1)
+references/do-not-flag.md         vendored from humanizer: false positives, human markers (Pass 2)
+references/voice-matching.md      vendored from humanizer: voice reading (Pass 4)
+references/provenance-signals.md  native: Unicode carrier classes, context audit, limits (Step 0a)
+references/scoring.md             native: bands, 0-100 rubric, consistency heuristics
 references/examples.md            native: six worked diagnostic runs
+AGENTS.md                         adapter: Codex, Antigravity, OpenCode, Pi, Zed
+GEMINI.md                         adapter: Gemini CLI
+.cursor/rules/authenticity-check.mdc  adapter: Cursor
+.github/copilot-instructions.md   adapter: GitHub Copilot
+.windsurfrules                    adapter: Windsurf
+.clinerules                       adapter: Cline
+.continue/rules/authenticity-check.md  adapter: Continue and Zed
+CONVENTIONS.md                    adapter: Aider
+bin/authenticity-check.js         npx installer (copies SKILL.md and references/)
+package.json                      npm package @hxp-tools/authenticity-check
+assets/hero.svg                   README art: title screen
+assets/case-map.svg               README art: the stages of one run
+assets/rogues.svg                 README art: the six families of tells
+assets/scoreboard.svg             README art: the score bands
+assets/achievements.svg           README art: achievement badges
 evals/evals.json                  verification cases (not part of the runtime skill)
 evals/files/VOICE.md              voice baseline used by the voice-deviation eval
 evals/RESULTS.md                  recorded blind verification runs
-.github/workflows/drift.yml       CI: runs the drift check on pushes and pull requests
+CHANGELOG.md                      release history
+.github/workflows/drift.yml       CI: drift check and installer smoke test
+.github/workflows/publish.yml     CI: publishes a v* tag to npm
 .github/scripts/check_drift.py    the drift check (repo tooling, not part of the skill)
 ```
 

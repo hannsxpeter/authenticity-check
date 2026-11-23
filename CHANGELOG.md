@@ -5,6 +5,44 @@ to semantic versioning.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-23
+
+Product release. The skill ships as the npm package
+`@hxp-tools/authenticity-check`, and the README is redrawn as an arcade
+landing page. No change to the scoring method, the band logic, the
+criteria, or the diagnostic-only boundary.
+
+### Added
+
+- `npx @hxp-tools/authenticity-check` installs `SKILL.md` and `references/`
+  for Claude Code, Codex, Cursor, and Windsurf. It installs for detected
+  tools by default, accepts tool names or `all`, honors `*_SKILLS_DIR`
+  overrides, refuses to overwrite a folder that is not this skill, and
+  `--uninstall` removes only what it installed. Zero dependencies.
+- `package.json`, the installer at `bin/authenticity-check.js`, and a
+  publish workflow that releases a `v*` tag to npm with provenance.
+- README art in `assets/`: a title screen, a level map of one run, a rogues
+  gallery of the six tell families, a scoreboard of the bands with the
+  worked examples pinned, and achievement badges.
+- The drift check now also requires `package.json` to match the skill
+  version, and CI smoke-tests the installer.
+
+### Changed
+
+- README rewritten and shortened: press start, the case file, rogues
+  gallery, scoreboard, achievements, then the reference sections.
+- The README and `references/scoring.md` now describe `voiceprint` as the
+  shipped bundle rather than a future product.
+- `SKILL.md` `metadata.version` and the `README.md` version badge bumped to
+  1.3.0.
+
+### Removed
+
+- `.godpowers/docs/UPDATE-LOG.mdx`, a one-off v1.2.1 audit log whose file
+  counts and scope no longer matched the repository.
+- The README's standalone voiceprint and long provenance-comparison
+  sections, folded into shorter sections that point at the reference files.
+
 ## [1.2.3] - 2026-10-08
 
 Tooling patch. Adds a drift check that runs in CI, plus the documentation
@@ -301,7 +339,8 @@ First stable release.
   known-vs-non-known battery, and the relocated-signature regression set, all
   run as blind isolated diagnoses. MIT license.
 
-[Unreleased]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.3...HEAD
+[Unreleased]: https://github.com/hannsxpeter/authenticity-check/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.3...v1.3.0
 [1.2.3]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/hannsxpeter/authenticity-check/compare/v1.2.0...v1.2.1

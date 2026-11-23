@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Fail when authenticity-check's docs drift out of agreement with each other.
 
-Checks versions, catalog and example counts, eval structure, what every tool
-adapter must mention, the vendored criteria headers and sync stamps, file
-references, the README layout and anchors, and house style. Adapted from
+Checks versions (including package.json), catalog and example counts, eval
+structure, what every tool adapter must mention, the vendored criteria headers
+and sync stamps, file references, the README layout and anchors, and house
+style. Adapted from
 humanizer's drift check. Repository tooling, not part of the skill. Standard
 library only; run from anywhere inside the repository:
 
@@ -164,6 +165,13 @@ def check_versions(version):
     link = sources[2][1]
     if link and not link.group(0).endswith(f"v{version}"):
         report(log, line_of(log, link.start()), f"the {version} link should point at tag v{version}")
+    try:
+        package = json.loads(TEXT["package.json"]).get("version")
+    except (KeyError, json.JSONDecodeError):
+        report("package.json", 1, "package.json is missing or not valid JSON")
+        return
+    if package != version:
+        report("package.json", 1, f"package.json version says {package}, SKILL.md says {version}")
 
 
 def check_catalog():
@@ -325,6 +333,9 @@ def check_references():
             ref = match.group(1)
             if not ref.endswith("/") and ref not in TEXT:
                 report(path, line_of(path, match.start()), f"mentions missing file {ref}")
+    for match in re.finditer(r"\]\(((?:assets|bin)/[^)\s]+)\)", TEXT["README.md"]):
+        if match.group(1) not in TEXT:
+            report("README.md", line_of("README.md", match.start()), f"links missing file {match.group(1)}")
 
 
 def check_layout():
